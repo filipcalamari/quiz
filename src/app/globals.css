@@ -1,0 +1,55 @@
+:root {
+  /* Quiz tokens mapped onto the Calamari Webflow design system
+     (vars/colors/fonts come from src/devlink/css/global.css). */
+  --color-bg: var(--_colors---color-main--white);
+  --color-fg: var(--_colors---color-main--blue);
+  --color-muted: var(--_colors---context-color--text-tertiary);
+  --color-border: var(--_colors---context-color--stroke);
+  --color-surface: var(--_colors---color-main--white);
+  --color-surface-hover: var(--_colors---color-shade--blue-50);
+  --color-accent: var(--_colors---color-main--blue);
+  --color-accent-hover: var(--_colors---color-shade--blue-600);
+  --color-accent-fg: var(--_colors---color-main--white);
+  --color-correct: var(--_colors---color-main--calamari-green);
+  --color-text-secondary: var(--_colors---context-color--text-secondary);
+
+  --radius: var(--radius-size--medium);
+  --radius-sm: var(--radius-size--small);
+  --maxw: 44rem;
+
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  /* Moderat is loaded via @font-face in the Webflow global.css */
+  --font: Moderat, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font);
+  line-height: 1.55;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+}

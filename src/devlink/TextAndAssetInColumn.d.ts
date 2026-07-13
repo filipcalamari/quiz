@@ -1,0 +1,33 @@
+import * as React from "react";
+import * as Types from "./webflow_modules/types";
+
+declare function TextAndAssetInColumn(props: {
+  ctaVisibility?: Types.Visibility.VisibilityConditions;
+  dropdownContent1?: Types.Basic.RichTextChildren;
+  dropdownContent2?: Types.Basic.RichTextChildren;
+  dropdownContent3?: Types.Basic.RichTextChildren;
+  dropdownContent4?: Types.Basic.RichTextChildren;
+  dropdownContent5?: Types.Basic.RichTextChildren;
+  dropdownContent6?: Types.Basic.RichTextChildren;
+  dropdownHeader1?: React.ReactNode;
+  dropdownHeader2?: React.ReactNode;
+  dropdownHeader3?: React.ReactNode;
+  dropdownHeader4?: React.ReactNode;
+  dropdownHeader5?: React.ReactNode;
+  dropdownHeader6?: React.ReactNode;
+  dropdownsVisibility?: Types.Visibility.VisibilityConditions;
+  dropdownVisibility4?: Types.Visibility.VisibilityConditions;
+  dropdownVisibility5?: Types.Visibility.VisibilityConditions;
+  dropdownVisibility6?: Types.Visibility.VisibilityConditions;
+  header?: React.ReactNode;
+  imageLeft?: Types.Asset.Image;
+  imageLeftVisibility?: Types.Visibility.VisibilityConditions;
+  imageRight?: Types.Asset.Image;
+  imageRightVisibility?: Types.Visibility.VisibilityConditions;
+  richText?: Types.Basic.RichTextChildren;
+  richTextVisibility?: Types.Visibility.VisibilityConditions;
+  subheader?: React.ReactNode;
+  subheaderVisibility?: Types.Visibility.VisibilityConditions;
+  subtitle?: React.ReactNode;
+  subtitleVisibility?: Types.Visibility.VisibilityConditions;
+}): React.JSX.Element;
