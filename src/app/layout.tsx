@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body>
+      <body data-nav="static">
         <DevLinkProvider>{children}</DevLinkProvider>
       </body>
     </html>

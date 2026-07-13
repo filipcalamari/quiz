@@ -140,11 +140,13 @@ export default function Quiz() {
       <main className={`${styles.shell} ${styles.shellCentered}`}>
         <div className={styles.card}>
           <div className={styles.intro}>
-            <p className={styles.kicker}>Quiz wiedzy</p>
-            <h1 className={styles.introTitle}>Oceny okresowe</h1>
+            <p className={`${styles.brandLabel} text-color-brand`}>
+              Akademia Ocen Pracowniczych
+            </p>
+            <h1 className={styles.introTitle}>Quiz wiedzy</h1>
             <p className={styles.introLead}>
               {total} pytań o projektowaniu i prowadzeniu procesu ocen
-              okresowych. Wybierz odpowiedź, aby przejść dalej.
+              okresowych. Kliknij „Rozpocznij quiz”, aby przejść dalej.
             </p>
             <button
               className={`button ${styles.primaryBtn}`}
@@ -186,43 +188,65 @@ export default function Quiz() {
 
   // ---- Quiz screen ----
   const progress = (step / total) * 100;
+  const hasScenario = !!(
+    (q.context && q.context.length > 0) ||
+    (q.mail && q.mail.length > 0)
+  );
 
   return (
     <main className={styles.shell}>
-      <div className={styles.card}>
-        <header className={styles.header}>
-          <div className={styles.progressRow}>
-            <span className={styles.progressLabel}>
+      <div
+        className={`${styles.quizCard} ${
+          hasScenario ? styles.quizCardWithScenario : ""
+        }`}
+      >
+        <header className={styles.topNav}>
+          <span className={`${styles.brandLabel} text-color-brand`}>
+            Akademia Ocen Pracowniczych - Quiz
+          </span>
+          <div className={styles.topNavRow}>
+            <span className={styles.questionCount}>
               Pytanie {step + 1} z {total}
             </span>
-          </div>
-          <div
-            className={styles.progressTrack}
-            role="progressbar"
-            aria-valuemin={0}
-            aria-valuemax={total}
-            aria-valuenow={step + 1}
-          >
             <div
-              className={styles.progressBar}
-              style={{ width: `${progress}%` }}
-            />
+              className={styles.progressTrack}
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={total}
+              aria-valuenow={step + 1}
+            >
+              <div
+                className={styles.progressBar}
+                style={{ width: `${progress}%` }}
+              />
+            </div>
           </div>
         </header>
 
-        <div key={step} className={styles.body}>
-          {q.context && q.context.length > 0 && (
-            <div className={styles.context}>
-              <p className={styles.contextTitle}>Scenariusz</p>
-              {q.context.map((p, i) => (
-                <p key={i} className={styles.contextPara}>
-                  {p}
-                </p>
-              ))}
-            </div>
-          )}
+        <div className={styles.quizBody}>
+        {hasScenario && (
+          <aside className={styles.scenario}>
+            <p className={styles.contextTitle}>Scenariusz</p>
+            {q.context?.map((p, i) => (
+              <p key={i} className={styles.contextPara}>
+                {p}
+              </p>
+            ))}
+            {q.mail && q.mail.length > 0 && (
+              <div className={styles.mailBox}>
+                {q.mail.map((p, i) => (
+                  <p key={i} className={styles.mailPara}>
+                    {p}
+                  </p>
+                ))}
+              </div>
+            )}
+          </aside>
+        )}
 
-          <h2 className={styles.question}>{q.question}</h2>
+        <div className={styles.quizMain}>
+          <div key={step} className={styles.body}>
+            <h2 className={styles.question}>{q.question}</h2>
 
           {q.type === "single" && (
             <ul className={styles.options}>
@@ -256,7 +280,11 @@ export default function Quiz() {
                       aria-pressed={selected}
                     >
                       <span className={`${styles.checkbox} ${selected ? styles.checkboxOn : ""}`} aria-hidden="true">
-                        {selected ? "✓" : ""}
+                        {selected && (
+                          <svg className={styles.checkIcon} viewBox="0 0 24 24">
+                            <use href="#check" />
+                          </svg>
+                        )}
                       </span>
                       <span className={styles.optLabel}>{opt.label}</span>
                     </button>
@@ -291,6 +319,8 @@ export default function Quiz() {
               ))}
             </ul>
           )}
+          </div>
+        </div>
         </div>
 
         <footer className={styles.footer}>

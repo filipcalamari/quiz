@@ -4,10 +4,9 @@
   justify-content: center;
   /* Section padding (Webflow --padding-vertical--section), with extra top
      clearance for the navbar height. */
-  padding-top: calc(
-    var(--utilities--navbar-height) + var(--padding-vertical--section)
-  );
-  padding-bottom: var(--padding-vertical--section);
+  /* Only the navbar height, so the quiz top nav sits flush below the global
+     navbar with no gap. */
+  padding-top: var(--utilities--navbar-height);
   padding-inline: var(--space-3);
 }
 
@@ -25,26 +24,103 @@
   gap: var(--space-4);
 }
 
-/* ---------- Header / progress ---------- */
-.header {
+/* ---------- Quiz question layout ---------- */
+/* The quiz card fills at least the viewport minus the navbar (and the top
+   section gap), so the top nav sits up top, the bottom nav at the bottom, and
+   the middle content stretches to fill the space between. */
+.quizCard {
+  width: 100%;
+  max-width: var(--maxw);
+  min-height: calc(100dvh - var(--utilities--navbar-height));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Middle content — grows to fill the space between the two navs. */
+.quizBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 0;
+}
+
+.quizMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+/* Desktop: scenario (left) + form (right) as two equal columns that stretch to
+   fill the middle; top/bottom navs already span full width as card children. */
+@media (min-width: 64rem) {
+  .quizCardWithScenario {
+    max-width: 60rem;
+  }
+
+  .quizCardWithScenario .quizBody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Spacing is handled by symmetric column padding around the divider. */
+    column-gap: 0;
+    align-items: stretch;
+  }
+
+  .quizCardWithScenario .scenario {
+    padding-right: var(--space-5);
+  }
+
+  /* Vertical stroke between the two columns. */
+  .quizCardWithScenario .quizMain {
+    padding-left: var(--space-5);
+    border-left: 0.0625rem solid var(--color-border);
+  }
+}
+
+/* ---------- Top nav / progress ---------- */
+/* Sticks just below the site navbar; question count on the left, progress
+   bar filling the rest. */
+.topNav {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  position: sticky;
+  top: var(--utilities--navbar-height);
+  z-index: 5;
+  background: var(--color-bg);
+  padding-block: var(--space-3);
+  border-bottom: 0.0625rem solid var(--color-border);
 }
 
-.progressRow {
+/* Question count + progress bar, vertically centered together. */
+.topNavRow {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  gap: var(--space-4);
 }
 
-.progressLabel {
-  font-size: 0.8125rem;
-  color: var(--color-muted);
+/* Brand eyebrow ("Akademia Ocen Pracowniczych …") — regular weight, brand
+   color comes from the global `.text-color-brand` class. */
+.brandLabel {
+  margin: 0;
+  font-size: var(--_typography--body---size--regular);
+  font-weight: 400;
+}
+
+/* Same heading font as "Scenariusz". */
+.questionCount {
+  flex: 0 0 auto;
+  font-size: var(--_typography--body---size--medium);
+  font-weight: 700;
+  color: var(--color-fg);
+  white-space: nowrap;
 }
 
 .progressTrack {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   height: 0.375rem;
   background: var(--color-border);
   border-radius: 999rem;
@@ -77,7 +153,29 @@
   }
 }
 
-.context {
+/* Scenario column — plain text, no box. */
+.scenario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contextTitle {
+  margin: 0;
+  font-size: var(--_typography--body---size--medium);
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+.contextPara {
+  margin: 0;
+  white-space: pre-line;
+  font-size: var(--_typography--body---size--regular);
+  color: var(--color-fg);
+}
+
+/* Email message rendered inside a grey box. */
+.mailBox {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -87,18 +185,11 @@
   border-radius: var(--radius);
 }
 
-.contextTitle {
-  margin: 0;
-  font-size: var(--_typography--body---size--medium);
-  font-weight: 700;
-  color: var(--color-muted);
-}
-
-.contextPara {
+.mailPara {
   margin: 0;
   white-space: pre-line;
-  font-size: 0.9375rem;
-  color: var(--color-text-secondary);
+  font-size: var(--_typography--body---size--regular);
+  color: var(--color-fg);
 }
 
 .question {
@@ -196,6 +287,12 @@
 .checkboxOn {
   background: var(--color-accent-fg);
   color: var(--color-accent);
+}
+
+.checkIcon {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
 }
 
 /* ---------- True / False ---------- */
@@ -334,10 +431,6 @@
 }
 
 @media (max-width: 30rem) {
-  .shell {
-    padding-top: calc(var(--utilities--navbar-height) + var(--space-5));
-    padding-bottom: var(--space-5);
-  }
   .introTitle {
     font-size: 2rem;
   }

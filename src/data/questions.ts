@@ -6,6 +6,7 @@ export type SingleQuestion = {
   id: number;
   type: "single";
   context?: string[];
+  mail?: string[];
   question: string;
   options: Option[];
   correct: string; // option key
@@ -15,6 +16,7 @@ export type MultipleQuestion = {
   id: number;
   type: "multiple";
   context?: string[];
+  mail?: string[];
   question: string;
   options: Option[];
   correct: string[]; // option keys
@@ -24,6 +26,7 @@ export type TrueFalseQuestion = {
   id: number;
   type: "truefalse";
   context?: string[];
+  mail?: string[];
   question: string;
   statements: Statement[];
 };
@@ -36,8 +39,10 @@ export const questions: Question[] = [
     type: "single",
     context: [
       "Pracujesz w firmie BrightFlow i właśnie dostajesz maila o następującej treści od swojej CEO.",
+    ],
+    mail: [
       "Od: Anna Nowak – CEO BrightFlow\nDo: HR Business Partner",
-      "Cześć,\nByłam wczoraj na konferencji dla CEO i praktycznie każdy mówił o ocenach okresowych. Zastanawiam się, czy nie powinniśmy w końcu ich wdrożyć.\nZ drugiej strony mamy dopiero 18 osób. Nadal codziennie rozmawiam z większością zespołu, a nasz model biznesowy zmienia się praktycznie co kilka tygodni, bo wciąż szukamy najlepszego kierunku rozwoju produktu.\nCo o tym myślisz?\nAnna",
+      "Cześć,\n\nByłam wczoraj na konferencji dla CEO i praktycznie każdy mówił o ocenach okresowych. Zastanawiam się, czy nie powinniśmy w końcu ich wdrożyć.\n\nZ drugiej strony mamy dopiero 18 osób. Nadal codziennie rozmawiam z większością zespołu, a nasz model biznesowy zmienia się praktycznie co kilka tygodni, bo wciąż szukamy najlepszego kierunku rozwoju produktu.\n\nCo o tym myślisz?\n\nAnna",
     ],
     question: "Jak będzie wyglądać Twoja odpowiedź?",
     options: [
