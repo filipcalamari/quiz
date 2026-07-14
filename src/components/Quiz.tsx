@@ -289,7 +289,7 @@ export default function Quiz() {
           ) : (
             <div className={styles.shareBlock}>
               <label className={styles.nameLabel} htmlFor="cert-name">
-                Wpisz imię i nazwisko, aby pochwalić się certyfikatem na LinkedIn
+                Wpisz imię i nazwisko, aby pochwalić się certyfikatem na LinkedIn
               </label>
               <input
                 id="cert-name"
@@ -494,25 +494,28 @@ export default function Quiz() {
         </div>
         </div>
 
-        <footer className={styles.footer}>
-          <button
-            className={`button-secondary ${styles.ghostBtn}`}
-            onClick={goBack}
-            disabled={step === 0}
-          >
-            Wstecz
-          </button>
+        {(step > 0 || q.type !== "single") && (
+          <footer className={styles.footer}>
+            {step > 0 && (
+              <button
+                className={`button-secondary ${styles.ghostBtn}`}
+                onClick={goBack}
+              >
+                Wstecz
+              </button>
+            )}
 
-          {q.type !== "single" && (
-            <button
-              className={`button ${styles.primaryBtn}`}
-              onClick={goNext}
-              disabled={!complete}
-            >
-              {step + 1 >= total ? "Zakończ" : "Dalej"}
-            </button>
-          )}
-        </footer>
+            {q.type !== "single" && (
+              <button
+                className={`button ${styles.primaryBtn}`}
+                onClick={goNext}
+                disabled={!complete}
+              >
+                {step + 1 >= total ? "Zakończ" : "Dalej"}
+              </button>
+            )}
+          </footer>
+        )}
       </div>
     </main>
   );

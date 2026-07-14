@@ -98,7 +98,7 @@
 .topNavRow {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: 0;
 }
 
 /* Brand eyebrow ("Akademia Ocen Pracowniczych …") — regular weight, brand
@@ -111,9 +111,14 @@
 
 /* Same heading font as "Scenariusz". */
 .questionCount {
+  /* Fixed width (sized for the widest "Pytanie 28 z 28") with tabular figures
+     so the label never reflows and the progress bar always starts at the same
+     position across steps. */
   flex: 0 0 auto;
+  width: 9.5rem;
   font-size: var(--_typography--body---size--medium);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   color: var(--color-fg);
   white-space: nowrap;
 }
@@ -382,6 +387,12 @@
 .footer .primaryBtn,
 .footer .ghostBtn {
   width: auto;
+}
+
+/* Keep the primary (Dalej/Zakończ) button on the right even when the
+   secondary (Wstecz) button is absent. */
+.footer .primaryBtn {
+  margin-left: auto;
 }
 
 /* Primary / secondary buttons reuse the Webflow `.button` component classes

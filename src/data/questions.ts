@@ -193,6 +193,8 @@ export const questions: Question[] = [
     type: "single",
     context: [
       "Podczas spotkania projektowego Anna (CEO) mówi:",
+    ],
+    mail: [
       "„Może nie komplikujmy tego. Pobierzmy gotowy formularz ocen z Internetu i zacznijmy z niego korzystać.”",
     ],
     question: "Jak odpowiesz Annie?",
@@ -224,6 +226,8 @@ export const questions: Question[] = [
     type: "multiple",
     context: [
       "Podczas warsztatu dla liderów pojawiło się pytanie:",
+    ],
+    mail: [
       "„Co zrobić, gdy w trakcie okresu oceny zmienią się priorytety firmy i wcześniej ustalone cele przestaną być aktualne?”",
     ],
     question: "Które z poniższych odpowiedzi są zgodne z podejściem przedstawionym w Akademii? (Możesz wybrać więcej niż jedną odpowiedź.)",
@@ -239,7 +243,9 @@ export const questions: Question[] = [
     id: 13,
     type: "single",
     context: [
-      "Dzień przed rozpoczęciem rozmów okresowych Michał (HR Business Partner) otrzymał wiadomość od Karoliny (Head of Development).",
+      "Dzień przed rozpoczęciem rozmów okresowych Michał (HR Business Partner) otrzymał wiadomość od Karoliny (Head of Development):",
+    ],
+    mail: [
       "Cześć Michał,\nJutro prowadzę pierwszą rozmowę oceniającą. Pracownik osiągnął wszystkie cele, ale w ostatnich miesiącach miał kilka konfliktów z zespołem.\nJak powinnam poprowadzić tę rozmowę?\nKarolina",
     ],
     question: "Jakiej odpowiedzi Michał powinien udzielić Karolinie?",
@@ -285,7 +291,9 @@ export const questions: Question[] = [
     id: 16,
     type: "single",
     context: [
-      "W połowie pierwszego cyklu ocen okresowych Michał (HR Business Partner) otrzymał wiadomość od Tomasza (Head of Sales).",
+      "W połowie pierwszego cyklu ocen okresowych Michał (HR Business Partner) otrzymał wiadomość od Tomasza (Head of Sales):",
+    ],
+    mail: [
       "Cześć Michał,\nMam dziś zaplanowane cztery rozmowy oceniające jedna po drugiej. Każdej osobie wyślę formularz tuż przed spotkaniem, żeby nie miała czasu przygotować odpowiedzi. Dzięki temu rozmowy będą bardziej spontaniczne.\nTomasz",
     ],
     question: "Co Michał powinien rekomendować Tomaszowi?",
@@ -301,7 +309,9 @@ export const questions: Question[] = [
     id: 17,
     type: "single",
     context: [
-      "Po zakończeniu pierwszego cyklu ocen Anna (CEO) spotyka się z Michałem (HR Business Partnerem).",
+      "Po zakończeniu pierwszego cyklu ocen Anna (CEO) spotyka się z Michałem (HR Business Partnerem):",
+    ],
+    mail: [
       "Anna:\n„Myślę, że podczas jednej rozmowy omówimy ocenę, plan rozwoju i od razu podejmiemy decyzję o podwyżce. Dzięki temu pracownik będzie miał wszystko załatwione podczas jednego spotkania.”",
     ],
     question: "Jakiej odpowiedzi udzielisz Annie?",
@@ -364,6 +374,8 @@ export const questions: Question[] = [
     context: [
       "Po zakończeniu rozmowy oceniającej Karolina (Head of Development) przygotowała listę obszarów do rozwoju dla jednego z programistów:",
       "• lepsze planowanie pracy,\n• częstsze przekazywanie informacji o ryzykach,\n• rozwój umiejętności prezentacyjnych,\n• udział w szkoleniu technicznym,\n• poprawa dokumentacji projektowej,\n• skuteczniejsze delegowanie zadań.",
+    ],
+    mail: [
       "Karolina:\n„Chciałabym wpisać do planu rozwoju wszystkie te obszary. Dzięki temu niczego nie pominiemy.”",
     ],
     question: "Jakiej odpowiedzi udzielisz Karolinie?",
@@ -410,6 +422,8 @@ export const questions: Question[] = [
     type: "single",
     context: [
       "Po zakończeniu rozmowy oceniającej Marek (CFO) powiedział pracownikowi:",
+    ],
+    mail: [
       "„Musisz bardziej popracować nad komunikacją. Wrócimy do tego za pół roku.”",
     ],
     question: "Która odpowiedź najlepiej pokazuje, co należało zrobić zamiast tego?",
@@ -426,7 +440,10 @@ export const questions: Question[] = [
     type: "multiple",
     context: [
       "Po kilku miesiącach od wdrożenia ocen okresowych Anna (CEO) zauważyła, że liderzy regularnie spotykają się z pracownikami, jednak w zespołach nadal pojawiają się nieporozumienia.",
-      "Podczas spotkania z Michałem (HR Business Partnerem) mówi:\n„Liderzy rozmawiają z ludźmi, ale mam wrażenie, że każdy inaczej rozumie priorytety. Pracownicy często słyszą, że »mogliby robić coś lepiej«, ale rzadko wiedzą, co konkretnie mają zmienić.”",
+      "Podczas spotkania z Michałem (HR Business Partnerem) mówi:",
+    ],
+    mail: [
+      "„Liderzy rozmawiają z ludźmi, ale mam wrażenie, że każdy inaczej rozumie priorytety. Pracownicy często słyszą, że »mogliby robić coś lepiej«, ale rzadko wiedzą, co konkretnie mają zmienić.”",
     ],
     question: "Które działania najlepiej wspierają budowanie kultury jasnych oczekiwań opisanej w Akademii? (Możesz wybrać więcej niż jedną odpowiedź.)",
     options: [
@@ -456,7 +473,9 @@ export const questions: Question[] = [
     id: 27,
     type: "single",
     context: [
-      "Po spotkaniach z oceną roczną Anna (CEO) spotyka się z Michałem (HR Business Partnerem).",
+      "Po spotkaniach z oceną roczną Anna (CEO) spotyka się z Michałem (HR Business Partnerem):",
+    ],
+    mail: [
       "Anna:\n„Przygotowałeś raport z pierwszego roku. Co powinno być dla mnie najważniejsze podczas jego analizy?”",
     ],
     question: "Który wniosek najlepiej odzwierciedla podejście przedstawione w Akademii?",
@@ -473,6 +492,8 @@ export const questions: Question[] = [
     type: "single",
     context: [
       "Anna (CEO) i Michał (HR Business Partner) nadal są na spotkaniu z omawianiem danych ze spotkań z oceną roczną. Michał mówi:",
+    ],
+    mail: [
       "„Przeanalizowałem wyniki. W kilku zespołach pracownicy od trzech kolejnych kwartałów wskazują ten sam problem – brak jasnych priorytetów i trudności z podejmowaniem decyzji. Jednocześnie ten obszar regularnie pojawia się również podczas rozmów oceniających.”",
     ],
     question: "Jaką decyzję, zgodnie z podejściem przedstawionym w Akademii, powinna podjąć Anna?",

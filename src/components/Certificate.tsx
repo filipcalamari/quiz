@@ -21,12 +21,23 @@ const Certificate = forwardRef<HTMLDivElement, CertificateProps>(
       <div ref={ref} className={styles.certificate}>
         <div className={styles.inner}>
           <div className={styles.content}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className={styles.logo}
-              src={`${basePath}/calamari-logo.png`}
-              alt="Calamari"
-            />
+            <div className={styles.logoRow}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className={styles.logo}
+                src={`${basePath}/calamari-logo.png`}
+                alt="Calamari"
+              />
+              <span className={styles.logoX} aria-hidden="true">
+                ×
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className={`${styles.logo} ${styles.logoTeamboost}`}
+                src={`${basePath}/logo-teamboost.png`}
+                alt="TeamBoost"
+              />
+            </div>
             <h1 className={styles.title}>
               Certyfikat ukończenia
               <br />
@@ -45,14 +56,32 @@ const Certificate = forwardRef<HTMLDivElement, CertificateProps>(
             </div>
 
             <div className={styles.signatures}>
-              <p className={styles.signature}>
-                <span className={styles.sigName}>Kamil Wojewoda</span> | Co-founder
-                of Calamari
-              </p>
-              <p className={styles.signature}>
-                <span className={styles.sigName}>Martyna Lempert</span> | Founder
-                of TeamBoost
-              </p>
+              <div className={styles.signature}>
+                <p className={styles.sigLine}>
+                  <span className={styles.sigName}>Kamil Wojewoda</span> |
+                  Co-founder w Calamari
+                </p>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className={styles.sigImg}
+                  src={`${basePath}/podpis-kamil-wojewoda.png`}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div className={styles.signature}>
+                <p className={styles.sigLine}>
+                  <span className={styles.sigName}>Martyna Lempert</span> |
+                  Founder w TeamBoost
+                </p>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className={styles.sigImg}
+                  src={`${basePath}/podpis-martyna-lempert.png`}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
             </div>
           </div>
 
