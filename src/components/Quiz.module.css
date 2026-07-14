@@ -616,25 +616,29 @@
   flex-shrink: 0;
 }
 
-/* Secondary action: download the PDF (quiet outline). */
+/* Secondary action: download the PDF. Visuals (height, border, radius, font)
+   come from the Webflow `.button-secondary` class applied in JSX; this helper
+   only forces full width so it matches the primary share button. */
 .downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   width: 100%;
-  min-height: 2.75rem;
-  padding: 0 1rem;
-  border-radius: 1rem;
-  background: transparent;
-  border: 0.0625rem solid var(--color-border);
-  color: var(--color-fg);
-  font-family: var(--font);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  line-height: 1.25;
   cursor: pointer;
-  transition: background 0.15s ease;
 }
 
-.downloadBtn:hover {
-  background: var(--color-surface-hover);
+.downloadBtn:hover:not(:disabled) {
+  transform: translateY(-0.125rem);
+}
+
+/* Size the Webflow Icon component (rendered as .icon-component) to match the
+   LinkedIn icon on the share button. */
+.downloadBtn :global(.icon-component) {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+  fill: currentColor;
 }
 
 /* Subtle text link (popup-blocked fallback after sharing). */

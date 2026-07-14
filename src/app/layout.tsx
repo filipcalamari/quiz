@@ -4,7 +4,7 @@ import "./globals.css";
 import { DevLinkProvider } from "@/devlink/DevLinkProvider";
 
 export const metadata: Metadata = {
-  title: "Quiz – Oceny okresowe",
+  title: "Akademia Ocen Pracowniczych - Quiz | Calamari",
   description: "Quiz wiedzy o procesie ocen okresowych.",
 };
 

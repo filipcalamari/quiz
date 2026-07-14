@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { questions, type Question } from "@/data/questions";
 import { basePath } from "@/basePath";
+import { Icon } from "@/devlink/Icon";
 import Certificate from "./Certificate";
 import styles from "./Quiz.module.css";
 
@@ -273,10 +274,11 @@ export default function Quiz() {
               </p>
               <button
                 type="button"
-                className={styles.downloadBtn}
+                className={`button-secondary ${styles.downloadBtn}`}
                 onClick={generateCertificate}
               >
-                Pobierz certyfikat (PDF)
+                <Icon iconId="#file-download" />
+                Pobierz certyfikat
               </button>
               <button
                 type="button"
@@ -289,7 +291,7 @@ export default function Quiz() {
           ) : (
             <div className={styles.shareBlock}>
               <label className={styles.nameLabel} htmlFor="cert-name">
-                Wpisz imię i nazwisko, aby pochwalić się certyfikatem na LinkedIn
+                Wpisz imię i nazwisko, pobierz swój certyfikat i pochwał się nim na LinkedIn!
               </label>
               <input
                 id="cert-name"
@@ -306,18 +308,19 @@ export default function Quiz() {
               {certError && <p className={styles.certErrorMsg}>{certError}</p>}
               <button
                 type="button"
+                className={`button-secondary ${styles.downloadBtn}`}
+                onClick={generateCertificate}
+              >
+                <Icon iconId="#file-download" />
+                Pobierz certyfikat
+              </button>
+              <button
+                type="button"
                 className={`button ${styles.shareBtn}`}
                 onClick={submitCertificate}
               >
                 <LinkedInIcon />
                 Udostępnij na LinkedIn
-              </button>
-              <button
-                type="button"
-                className={styles.textLink}
-                onClick={generateCertificate}
-              >
-                Pobierz certyfikat (PDF)
               </button>
             </div>
           )}
