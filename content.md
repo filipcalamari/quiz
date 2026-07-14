@@ -1,5 +1,5 @@
 Pytanie 1
-Pracujesz w firmie BrightFlow i właśnie dostajesz maila o następującej treści od swojej CEO. 
+Pracujesz w firmie BrightFlow i właśnie dostajesz maila o następującej treści od swojej CEO: 
 Od: Anna Nowak – CEO BrightFlow
 Do: HR Business Partner
 Cześć,

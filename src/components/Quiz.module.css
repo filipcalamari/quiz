@@ -430,9 +430,209 @@
   max-width: 34rem;
 }
 
+/* ---------- Results / finish screen ---------- */
+/* Centered composition; the certificate is the hero, sharing the one CTA. */
+.finish {
+  max-width: 54rem;
+  align-items: center;
+  text-align: center;
+  padding-block: var(--space-5);
+  gap: var(--space-4);
+}
+
+/* Score as a compact status pill — neutral grey with brand-blue text. */
+.scorePill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.125rem;
+  border-radius: 62.5rem;
+  background: var(--_colors---color-shade--blue-50);
+  color: var(--_colors---context-color--text-highlight);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.finishTitle {
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.12;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+/* Live preview of the earned certificate. */
+.certPreview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  animation: certRise 0.5s ease both;
+}
+
+.certPreviewMeasure {
+  width: 100%;
+  max-width: 50rem;
+}
+
+.certFrame {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--color-surface);
+  box-shadow: 0 1.25rem 3.5rem rgba(13, 29, 68, 0.18);
+}
+
+.certScale {
+  width: 70rem;
+  height: 49.5rem;
+  transform-origin: top left;
+}
+
+@keyframes certRise {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certPreview {
+    animation: none;
+  }
+}
+
+/* Share section — form (before) or confirmation (after). */
+.shareBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 26rem;
+}
+
+.shareConfirm {
+  margin: 0 0 var(--space-1);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* Prompt above the name input. */
+.nameLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+.input {
+  width: 100%;
+  height: 3.25rem;
+  padding: 0 1rem;
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-fg);
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: center;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-correct);
+  box-shadow: 0 0 0 0.1875rem
+    color-mix(in srgb, var(--color-correct) 30%, transparent);
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.certErrorMsg {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--_colors---highligts--red);
+}
+
+/* Primary CTA: share to LinkedIn. Reuses the brand `.button` (green / blue
+   text); this class only adds the icon layout and full width. */
+.shareBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+}
+
+.shareBtn:hover:not(:disabled) {
+  transform: translateY(-0.125rem);
+}
+
+.shareBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.shareBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.linkedinIcon {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+}
+
+/* Secondary action: download the PDF (quiet outline). */
+.downloadBtn {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  background: transparent;
+  border: 0.0625rem solid var(--color-border);
+  color: var(--color-fg);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.downloadBtn:hover {
+  background: var(--color-surface-hover);
+}
+
+/* Subtle text link (popup-blocked fallback after sharing). */
+.textLink {
+  border: none;
+  background: none;
+  padding: 0.25rem;
+  color: var(--color-muted);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.textLink:hover {
+  color: var(--color-fg);
+}
+
 @media (max-width: 30rem) {
   .introTitle {
     font-size: 2rem;
+  }
+  .finishTitle {
+    font-size: 1.75rem;
   }
   .question {
     font-size: 1.1875rem;

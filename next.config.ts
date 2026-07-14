@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
+import { basePath } from "./src/basePath";
 
 const nextConfig: NextConfig = {
   // Mount path on Webflow Cloud. Must match the mount path used at deploy time.
-  basePath: "/akademia/oceny-pracownicze/quiz",
+  basePath,
 };
 
 export default nextConfig;

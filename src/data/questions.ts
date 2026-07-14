@@ -38,7 +38,7 @@ export const questions: Question[] = [
     id: 1,
     type: "single",
     context: [
-      "Pracujesz w firmie BrightFlow i właśnie dostajesz maila o następującej treści od swojej CEO.",
+      "Pracujesz w firmie BrightFlow i właśnie dostajesz maila o następującej treści od swojej CEO:",
     ],
     mail: [
       "Od: Anna Nowak – CEO BrightFlow\nDo: HR Business Partner",
