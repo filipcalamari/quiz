@@ -350,7 +350,8 @@ export default function Quiz() {
   const progress = (step / total) * 100;
   const hasScenario = !!(
     (q.context && q.context.length > 0) ||
-    (q.mail && q.mail.length > 0)
+    (q.mail && q.mail.length > 0) ||
+    (q.bullets && q.bullets.length > 0)
   );
 
   return (
@@ -400,6 +401,16 @@ export default function Quiz() {
                   </p>
                 ))}
               </div>
+            )}
+            {q.bulletsIntro && (
+              <p className={styles.contextPara}>{q.bulletsIntro}</p>
+            )}
+            {q.bullets && q.bullets.length > 0 && (
+              <ul className={styles.bulletList}>
+                {q.bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
+              </ul>
             )}
           </aside>
         )}

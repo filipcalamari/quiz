@@ -2,7 +2,13 @@ export type Option = { key: string; label: string };
 
 export type Statement = { text: string; answer: boolean }; // true = Prawda
 
-export type SingleQuestion = {
+// Optional list rendered after the mail box: an intro line + bullet points.
+type Bullets = {
+  bulletsIntro?: string;
+  bullets?: string[];
+};
+
+export type SingleQuestion = Bullets & {
   id: number;
   type: "single";
   context?: string[];
@@ -12,7 +18,7 @@ export type SingleQuestion = {
   correct: string; // option key
 };
 
-export type MultipleQuestion = {
+export type MultipleQuestion = Bullets & {
   id: number;
   type: "multiple";
   context?: string[];
@@ -22,7 +28,7 @@ export type MultipleQuestion = {
   correct: string[]; // option keys
 };
 
-export type TrueFalseQuestion = {
+export type TrueFalseQuestion = Bullets & {
   id: number;
   type: "truefalse";
   context?: string[];
@@ -103,8 +109,15 @@ export const questions: Question[] = [
     type: "single",
     context: [
       "Po zakończeniu prac nad procesem ocen okresowych Anna (CEO) przygotowała komunikat dla całej firmy.",
-      "Treść komunikatu:\n„Od przyszłego miesiąca wdrażamy proces ocen okresowych. W najbliższych dniach HR prześle formularze oraz terminy rozmów z liderami. Udział w procesie jest obowiązkowy.”",
-      "Po spotkaniu kilku pracowników zaczęło zadawać pytania:\n„Po co właściwie to robimy?”\n„Czy to będzie miało wpływ na moje wynagrodzenie?”\n„Czy ktoś będzie oceniał mnie jako człowieka?”",
+    ],
+    mail: [
+      "Od przyszłego miesiąca wdrażamy proces ocen okresowych. W najbliższych dniach HR prześle formularze oraz terminy rozmów z liderami. Udział w procesie jest obowiązkowy.",
+    ],
+    bulletsIntro: "Po spotkaniu kilku pracowników zaczęło zadawać pytania:",
+    bullets: [
+      "Po co właściwie to robimy?",
+      "Czy to będzie miało wpływ na moje wynagrodzenie?",
+      "Czy ktoś będzie oceniał mnie jako człowieka?",
     ],
     question: "Która odpowiedź najlepiej opisuje główny błąd popełniony w tej komunikacji?",
     options: [

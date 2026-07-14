@@ -192,6 +192,21 @@
   color: var(--color-fg);
 }
 
+/* Bullet list rendered after the message (e.g. employees' questions). */
+.bulletList {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--_typography--body---size--regular);
+  color: var(--color-fg);
+}
+
+.bulletList li {
+  padding-left: 0.25rem;
+}
+
 .question {
   margin: 0;
   font-size: 1.375rem;
