@@ -396,15 +396,8 @@
 }
 
 /* Primary / secondary buttons reuse the Webflow `.button` component classes
-   (applied in JSX). These module helpers add the interactive states the
+   (applied in JSX). These module helpers only add the disabled state the
    design-system classes don't define for a native <button>. */
-.primaryBtn:hover:not(:disabled) {
-  transform: translateY(-0.125rem);
-}
-
-.primaryBtn:active:not(:disabled) {
-  transform: scale(0.98);
-}
 
 /* Disabled primary reads as a muted (white) primary rather than a
    see-through green. */
@@ -414,17 +407,12 @@
   box-shadow: inset 0 0 0 0.09375rem var(--color-border);
   cursor: not-allowed;
   pointer-events: none;
-  transform: none;
 }
 
 .ghostBtn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
-}
-
-.ghostBtn:hover:not(:disabled) {
-  transform: translateY(-0.125rem);
 }
 
 /* ---------- Intro / Results ---------- */
@@ -597,14 +585,6 @@
   width: 100%;
 }
 
-.shareBtn:hover:not(:disabled) {
-  transform: translateY(-0.125rem);
-}
-
-.shareBtn:active:not(:disabled) {
-  transform: scale(0.98);
-}
-
 .shareBtn:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -626,10 +606,6 @@
   gap: 0.5rem;
   width: 100%;
   cursor: pointer;
-}
-
-.downloadBtn:hover:not(:disabled) {
-  transform: translateY(-0.125rem);
 }
 
 /* Size the Webflow Icon component (rendered as .icon-component) to match the

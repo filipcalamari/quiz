@@ -269,8 +269,7 @@ export default function Quiz() {
           {submitted ? (
             <div className={styles.shareBlock}>
               <p className={styles.shareConfirm}>
-                Gotowe — otworzyliśmy LinkedIn w nowej karcie. Dokończ publikację
-                tam.
+                Gotowe — otworzyliśmy LinkedIn w nowej karcie. Dokończ tam publikację.
               </p>
               <button
                 type="button"
