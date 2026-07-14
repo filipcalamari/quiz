@@ -108,7 +108,7 @@ export const questions: Question[] = [
     id: 5,
     type: "single",
     context: [
-      "Po zakończeniu prac nad procesem ocen okresowych Anna (CEO) przygotowała komunikat dla całej firmy.",
+      "Po zakończeniu prac nad procesem ocen okresowych Anna (CEO) przygotowała komunikat dla całej firmy:",
     ],
     mail: [
       "Od przyszłego miesiąca wdrażamy proces ocen okresowych. W najbliższych dniach HR prześle formularze oraz terminy rozmów z liderami. Udział w procesie jest obowiązkowy.",
