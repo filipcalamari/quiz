@@ -23,7 +23,8 @@ type Answer = {
 
 type Screen = "intro" | "quiz" | "results";
 
-const AUTO_ADVANCE_MS = 320;
+// Minimum number of correct answers required to earn the certificate.
+const PASS_THRESHOLD = 24;
 
 // Base (unscaled) certificate size, in rem — matches Certificate.module.css.
 const CERT_W_REM = 70;
@@ -73,7 +74,6 @@ export default function Quiz() {
   const [answers, setAnswers] = useState<Answer[]>(() =>
     questions.map((q) => emptyAnswer(q)),
   );
-  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Certificate form (results screen)
   const [name, setName] = useState("");
@@ -126,7 +126,6 @@ export default function Quiz() {
   );
 
   const goNext = useCallback(() => {
-    if (advanceTimer.current) clearTimeout(advanceTimer.current);
     if (step + 1 >= total) {
       setScreen("results");
     } else {
@@ -135,25 +134,23 @@ export default function Quiz() {
   }, [step, total]);
 
   const goBack = useCallback(() => {
-    if (advanceTimer.current) clearTimeout(advanceTimer.current);
     setStep((s) => Math.max(0, s - 1));
+  }, []);
+
+  const restartQuiz = useCallback(() => {
+    setAnswers(questions.map((q) => emptyAnswer(q)));
+    setName("");
+    setSubmitted(false);
+    setCertError(null);
+    setStep(0);
+    setScreen("quiz");
   }, []);
 
   const selectSingle = useCallback(
     (key: string) => {
       updateAnswer((a) => ({ ...a, single: key }));
-      if (advanceTimer.current) clearTimeout(advanceTimer.current);
-      advanceTimer.current = setTimeout(() => {
-        setStep((s) => {
-          if (s + 1 >= total) {
-            setScreen("results");
-            return s;
-          }
-          return s + 1;
-        });
-      }, AUTO_ADVANCE_MS);
     },
-    [total, updateAnswer],
+    [updateAnswer],
   );
 
   const toggleMultiple = useCallback(
@@ -253,6 +250,39 @@ export default function Quiz() {
   if (screen === "results") {
     const pct = Math.round((score / total) * 100);
     const displayName = name.trim() || "Imię i nazwisko";
+    const passed = score >= PASS_THRESHOLD;
+
+    if (!passed) {
+      return (
+        <main className={`${styles.shell} ${styles.shellCentered}`}>
+          <div className={`${styles.card} ${styles.finish}`}>
+            <span className={styles.scorePill}>
+              Twój wynik: {score}/{total} · {pct}%
+            </span>
+
+            <h1 className={styles.finishTitle}>
+              Jeszcze nie tym razem
+            </h1>
+
+            <div className={styles.shareBlock}>
+              <p className={styles.shareConfirm}>
+                Aby otrzymać certyfikat, musisz uzyskać co najmniej {PASS_THRESHOLD}{" "}
+                z {total} punktów. Powtórz materiały i spróbuj jeszcze raz — na
+                pewno się uda!
+              </p>
+              <button
+                type="button"
+                className={`button ${styles.shareBtn}`}
+                onClick={restartQuiz}
+              >
+                Spróbuj jeszcze raz
+              </button>
+            </div>
+          </div>
+        </main>
+      );
+    }
+
     return (
       <main className={`${styles.shell} ${styles.shellCentered}`}>
         <div className={`${styles.card} ${styles.finish}`}>
@@ -269,7 +299,7 @@ export default function Quiz() {
           {submitted ? (
             <div className={styles.shareBlock}>
               <p className={styles.shareConfirm}>
-                Gotowe — otworzyliśmy LinkedIn w nowej karcie. Dokończ tam publikację.
+                Gotowe — otworzyliśmy LinkedIn w nowej karcie. Dokończ tam publikację.
               </p>
               <button
                 type="button"
@@ -496,28 +526,24 @@ export default function Quiz() {
         </div>
         </div>
 
-        {(step > 0 || q.type !== "single") && (
-          <footer className={styles.footer}>
-            {step > 0 && (
-              <button
-                className={`button-secondary ${styles.ghostBtn}`}
-                onClick={goBack}
-              >
-                Wstecz
-              </button>
-            )}
+        <footer className={styles.footer}>
+          {step > 0 && (
+            <button
+              className={`button-secondary ${styles.ghostBtn}`}
+              onClick={goBack}
+            >
+              Wstecz
+            </button>
+          )}
 
-            {q.type !== "single" && (
-              <button
-                className={`button ${styles.primaryBtn}`}
-                onClick={goNext}
-                disabled={!complete}
-              >
-                {step + 1 >= total ? "Zakończ" : "Dalej"}
-              </button>
-            )}
-          </footer>
-        )}
+          <button
+            className={`button ${styles.primaryBtn}`}
+            onClick={goNext}
+            disabled={!complete}
+          >
+            {step + 1 >= total ? "Zakończ" : "Dalej"}
+          </button>
+        </footer>
       </div>
     </main>
   );

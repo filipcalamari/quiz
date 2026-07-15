@@ -406,7 +406,7 @@ export const questions: Question[] = [
     id: 23,
     type: "single",
     context: [
-      "W firmie przeprowadzono oceny okresowe. Liderzy oceniali głównie zaangażowanie, sympatię i ogólne wrażenia z pracy. Nie odnosili się do celów strategicznych firmy.",
+      "W firmie przeprowadzono oceny okresowe. Liderzy oceniali głównie zaangażowanie, komunikację i umiejętność organizacji pracy. Nie odnosili się do celów strategicznych firmy.",
     ],
     question: "Jaki będzie najbardziej prawdopodobny efekt takiego podejścia?",
     options: [
